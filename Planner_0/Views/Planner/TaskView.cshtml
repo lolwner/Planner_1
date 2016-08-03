@@ -1,0 +1,92 @@
+﻿@using Planner_0.Models.Planner;
+@model PlannerModel.Category
+@{
+    ViewBag.Title = "Timer";
+}
+
+<script src="~/Scripts/JS/progressbar.js" type="text/javascript"></script>
+<script src="~/Scripts/JS/Timer.js" type="text/javascript"></script>
+<br>
+<div>
+    <style>
+        #container {
+            margin: 20px;
+            position: relative;
+            height: 240px;
+        }
+
+        #round {
+            margin: auto;
+            border: 2px solid #ffc933;
+            background: #f5f5f5;
+            width: 300px;
+            border-radius: 25px;
+        }
+
+        table {
+            width: 300px;
+            margin: auto;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+</div>
+
+<div class="round" id="round">
+    <table>
+        <tr>
+            <td>
+                What is your task?
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form name="task_input">
+                    <input type="text" name="task_value" size="50"><br><br>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                How long you will be doing it?
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form name="time_input">
+                    <input type="text" name="dur_value" size="10"><br><br>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form name="start_timer_form">
+                    <input class="btn btn-default" type="button" name="start_timer" value="anime"
+                           onClick="Start_timer(time_input);"><br><br>
+
+                </form>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                Choose category
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @{
+                    IEnumerable<SelectListItem> Icategories;
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="container" id="container"></div>
+            </td>
+
+        </tr>
+    </table>
+</div>
