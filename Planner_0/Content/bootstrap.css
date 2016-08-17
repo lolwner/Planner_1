@@ -2054,6 +2054,18 @@ fieldset[disabled] .btn {
   border-color: #ffd666;
 }
 
+.btn-delete {
+  color: #333333;
+  background-color: #ff4e33;
+  border-color: #ff4e33;
+}
+
+.btn-edit {
+  color: #333333;
+  background-color: #1faee9;
+  border-color: #1faee9;
+}
+
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active,

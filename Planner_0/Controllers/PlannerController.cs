@@ -30,7 +30,9 @@ namespace Planner_0.Controllers
         [Authorize]
         public ActionResult ListOfTaskView() {
             ViewBag.User = System.Web.HttpContext.Current.User.Identity.GetUserId();
-            ViewBag.Categories = DB.Category.Where(c => c.User_ID == User_Id);
+
+            IEnumerable<PlannerModel.Task> tasks = DB.Task;
+            ViewBag.Task = tasks.Where(t => t.User_ID == System.Web.HttpContext.Current.User.Identity.GetUserId());
             return View();
         }
 

@@ -1,7 +1,47 @@
-﻿
+﻿@using Planner_0.Models.Planner;
+@model PlannerModel.Task
+
 @{
-    ViewBag.Title = "ListOfTaskView";
+            ViewBag.Title = "ListOfTaskView";
 }
 
 <h1>User id is</h1>
 <h2>@ViewBag.User</h2>
+
+
+
+    @foreach (var t in ViewBag.Task)
+    {
+        <table>
+            <tr>
+                <td width="80"><h2>@t.Title</h2></td>
+                <td width="10%">
+                    <input class="btn btn-delete" type="button" name="delete_task" value="delete"
+                           onClick="Start_timer(time_input);">
+                </td>
+                <td width="10%">
+                    <input class="btn btn-edit" type="button" name="edit_task" value="edit"
+                           onClick="Start_timer(time_input);">
+                </td>
+            </tr>
+        </table>
+        <br><br>
+    }
+
+
+    <style>
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            border-radius: 5px;
+            margin: auto;
+            /*background-color: #ffcf40;*/
+            background: #fad201;
+        }
+
+        td {
+            padding-top: .5em;
+    padding-bottom: .5em;
+            text-align: center;
+        }
+    </style>
