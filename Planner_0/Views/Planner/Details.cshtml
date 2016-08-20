@@ -1,0 +1,29 @@
+﻿@using Planner_0.Models.Planner;
+@model PlannerModel.Task
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Creation_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creation_Time)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Task_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

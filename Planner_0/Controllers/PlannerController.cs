@@ -49,6 +49,7 @@ namespace Planner_0.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PlannerModel.Task task = DB.Task.Find(id);
+
             if (task == null)
             {
                 return HttpNotFound();

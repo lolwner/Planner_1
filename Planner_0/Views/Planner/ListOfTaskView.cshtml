@@ -10,37 +10,40 @@
 
 
 
-    @foreach (var t in ViewBag.Task)
-    {
-        <table>
-            <tr>
-                <td width="80"><h2>@t.Title</h2></td>
-                <td width="10%">
-                    <input class="btn btn-delete" type="button" name="delete_task" value="delete"
-                           onClick="Start_timer(time_input);">
-                </td>
-                <td width="10%">
-                    <input class="btn btn-edit" type="button" name="edit_task" value="edit"
-                           onClick="Start_timer(time_input);">
-                </td>
-            </tr>
-        </table>
+@foreach (var t in ViewBag.Task)
+{
+    <table>
+        <tr>
+            <td width="80"><h2>@t.Title</h2></td>
+            <td width="10%">
+                <input class="btn btn-delete" type="button" name="delete_task" value="delete"
+                       onClick="Start_timer(time_input);">
+            </td>
+            <td width="10%">
+                <input class="btn btn-edit" type="button" name="edit_task" value="edit"
+                       onClick="Start_timer(time_input);">
+            </td>
+        </tr>
+        <tr>
+            @Html.ActionLink("Get detail", "Details", "Planner", new { id = t.Task_ID }, null)
+        </tr>
+    </table>
         <br><br>
+}
+
+
+<style>
+    table {
+        width: 70%;
+        border-collapse: collapse;
+        border-radius: 5px;
+        margin: auto;
+        background: #fad201;
     }
 
-
-    <style>
-        table {
-            width: 70%;
-            border-collapse: collapse;
-            border-radius: 5px;
-            margin: auto;
-            background: #fad201;
-        }
-
-        td {
-            padding-top: .5em;
-    padding-bottom: .5em;
-            text-align: center;
-        }
-    </style>
+    td {
+        padding-top: .5em;
+        padding-bottom: .5em;
+        text-align: center;
+    }
+</style>
