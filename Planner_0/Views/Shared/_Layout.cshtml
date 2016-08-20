@@ -22,10 +22,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Tasks", "ListOfTaskView", "Planner")</li>
+                    <li>@Html.ActionLink("Your tasks", "ListOfTaskView", "Planner")</li>
                     <li>@Html.ActionLink("Task", "TaskView", "Planner")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                    <li>@Html.ActionLink("New task", "Create", "Planner")</li>
                     
                 </ul>
                 @Html.Partial("_LoginPartial")

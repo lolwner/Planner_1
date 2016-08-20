@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Planner_0.Models.Planner;
 using Microsoft.AspNet.Identity;
 using System.Web.Security;
+using System.Net;
 
 namespace Planner_0.Controllers
 {
@@ -34,6 +35,25 @@ namespace Planner_0.Controllers
             IEnumerable<PlannerModel.Task> tasks = DB.Task;
             ViewBag.Task = tasks.Where(t => t.User_ID == System.Web.HttpContext.Current.User.Identity.GetUserId());
             return View();
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PlannerModel.Task task = DB.Task.Find(id);
+            if (task == null)
+            {
+                return HttpNotFound();
+            }
+            return View(task);
         }
 
     }

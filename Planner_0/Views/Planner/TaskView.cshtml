@@ -1,13 +1,11 @@
 ﻿@using Planner_0.Models.Planner;
-@model PlannerModel.Category
+@model PlannerModel.Task
 @{
     ViewBag.Title = "Timer";
 }
 
 <script src="~/Scripts/JS/progressbar.js" type="text/javascript"></script>
 <script src="~/Scripts/JS/Timer.js" type="text/javascript"></script>
-<br>
-<div>
     <style>
         #container {
             margin: 20px;
@@ -32,7 +30,7 @@
             text-align: center;
         }
     </style>
-</div>
+
 
 <div class="round" id="round">
     <table>
@@ -70,18 +68,7 @@
             </td>
 
         </tr>
-        <tr>
-            <td>
-                Choose category
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @{
-                    IEnumerable<SelectListItem> Icategories;
-                }
-            </td>
-        </tr>
+       
         <tr>
             <td>
                 <div class="container" id="container"></div>

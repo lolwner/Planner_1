@@ -50,19 +50,16 @@ namespace Planner_0.Models.Planner {
             [Required]
             public DateTime Creation_Time { get; set; }
 
-            //public int Color { get; set; }
-
             [Required]
             public int Category_ID { get; set; }
             
             [Required]
             public DateTime Deadline { get; set; }
 
-            //Default constructors, id search uses context
+            //Default constructors, id search using context
             public Task() {
                 this.Title = " ";
                 this.Creation_Time = new DateTime(2000, 1, 1);
-                //Color = 0;
                 this.Deadline = new DateTime(2001, 1, 1);
                 this.User_ID = System.Web.HttpContext.Current.User.Identity.GetUserId();
             }
@@ -70,9 +67,9 @@ namespace Planner_0.Models.Planner {
             public Task(string task) {
                 this.Title = task;
                 this.Creation_Time = new DateTime(2000, 1, 1);
-                //Color = 0;
                 this.Deadline = new DateTime(2001, 1, 1);
                 this.User_ID = System.Web.HttpContext.Current.User.Identity.GetUserId();
+                this.Category_ID = 0;
             }
 
             public Category Get_category() {

@@ -253,6 +253,7 @@
     <Content Include="Views\Planner\CategoryView.cshtml" />
     <Content Include="Views\Planner\TaskView.cshtml" />
     <Content Include="Views\Planner\ListOfTaskView.cshtml" />
+    <Content Include="Views\Planner\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
