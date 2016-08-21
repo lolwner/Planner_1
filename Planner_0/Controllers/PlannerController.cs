@@ -7,6 +7,8 @@ using Planner_0.Models.Planner;
 using Microsoft.AspNet.Identity;
 using System.Web.Security;
 using System.Net;
+using System.Data;
+using System.Data.Entity.Infrastructure;
 
 namespace Planner_0.Controllers
 {
@@ -42,6 +44,28 @@ namespace Planner_0.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Title, User_ID, Creation_Time, Category_ID, Deadline")]PlannerModel.Task task)
+        {
+            task.User_ID = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    DB.Task.Add(task);
+                    DB.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (DataException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+            return View(task);
+        }
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -57,5 +81,25 @@ namespace Planner_0.Controllers
             return View(task);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                PlannerModel.Task task = DB.Task.Find(id);
+                DB.Task.Remove(task);
+                DB.SaveChanges();
+            }
+            catch (RetryLimitExceededException/* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+            }
+            return RedirectToAction("ListOfTaskView");
+        }
     }
+
+
+
 }

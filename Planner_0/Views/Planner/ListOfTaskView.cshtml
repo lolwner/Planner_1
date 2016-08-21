@@ -14,21 +14,22 @@
 {
     <table>
         <tr>
-            <td width="80"><h2>@t.Title</h2></td>
-            <td width="10%">
-                <input class="btn btn-delete" type="button" name="delete_task" value="delete"
-                       onClick="Start_timer(time_input);">
+            <td width="76"><h2>@t.Title</h2></td>
+            <td width="8%">
+                <input class="btn btn-delete" type="button" name="delete_task" value="delete">
+                
             </td>
-            <td width="10%">
+            <td width="8%">
                 <input class="btn btn-edit" type="button" name="edit_task" value="edit"
                        onClick="Start_timer(time_input);">
             </td>
+            <td width="8%">
+                @Html.ActionLink("Get detail", "Details", "Planner", new { id = t.Task_ID }, new { @class = "btn btn-edit" })
+            </td>
         </tr>
-        <tr>
-            @Html.ActionLink("Get detail", "Details", "Planner", new { id = t.Task_ID }, null)
-        </tr>
+
     </table>
-        <br><br>
+    <br><br>
 }
 
 
