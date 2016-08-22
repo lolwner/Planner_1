@@ -255,6 +255,7 @@
     <Content Include="Views\Planner\ListOfTaskView.cshtml" />
     <Content Include="Views\Planner\Create.cshtml" />
     <Content Include="Views\Planner\Details.cshtml" />
+    <Content Include="Views\Planner\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

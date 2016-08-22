@@ -9,6 +9,7 @@ using System.Web.Security;
 using System.Net;
 using System.Data;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity;
 
 namespace Planner_0.Controllers
 {
@@ -18,7 +19,7 @@ namespace Planner_0.Controllers
         //var user = UserManager.FindById(User.Identity.GetUserId());
 
         public static string User_Id = System.Web.HttpContext.Current.User.Identity.GetUserId();
-        
+
 
         public ActionResult StartPageView()
         {
@@ -26,12 +27,14 @@ namespace Planner_0.Controllers
         }
 
         [Authorize]
-        public ActionResult TaskView() {
+        public ActionResult TaskView()
+        {
             return View();
         }
 
         [Authorize]
-        public ActionResult ListOfTaskView() {
+        public ActionResult ListOfTaskView()
+        {
             ViewBag.User = System.Web.HttpContext.Current.User.Identity.GetUserId();
 
             IEnumerable<PlannerModel.Task> tasks = DB.Task;
@@ -55,7 +58,7 @@ namespace Planner_0.Controllers
                 {
                     DB.Task.Add(task);
                     DB.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ListOfTaskView");
                 }
             }
             catch (DataException /* dex */)
@@ -97,6 +100,49 @@ namespace Planner_0.Controllers
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
             return RedirectToAction("ListOfTaskView");
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PlannerModel.Task task = DB.Task.Find(id);
+            //task.User_ID = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            if (task == null)
+            {
+                return HttpNotFound();
+            }
+            return View(task);
+        }
+
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPost(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var taskToUpdate = DB.Task.Find(id);
+            taskToUpdate.User_ID = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            if (TryUpdateModel(taskToUpdate, "",
+               new string[] { "Title", "Category_ID", "Deadline" }))
+            {
+                try
+                {
+                    DB.SaveChanges();
+
+                    return RedirectToAction("ListOfTaskView");
+                }
+                catch (RetryLimitExceededException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            return View(taskToUpdate);
         }
     }
 
