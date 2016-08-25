@@ -5,20 +5,14 @@
             ViewBag.Title = "ListOfTaskView";
 }
 
-<h1>User id is</h1>
-<h2>@ViewBag.User</h2>
-
-
 
 @foreach (var t in ViewBag.Task)
 {
     <table>
         <tr>
-            <td width="84"><h2>@t.Title</h2></td>
-            <td width="8%">
-                <input class="btn btn-edit" type="button" name="edit_task" value="edit"
-                       onClick="Start_timer(time_input);">
-            </td>
+            <td width="92"  ><h2>@t.Title</h2></td>
+
+
             <td width="8%">
                 @Html.ActionLink("Get detail", "Details", "Planner", new { id = t.Task_ID }, new { @class = "btn btn-edit" })
             </td>
