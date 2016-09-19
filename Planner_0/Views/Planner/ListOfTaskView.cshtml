@@ -2,7 +2,7 @@
 @model PlannerModel.Task
 
 @{
-            ViewBag.Title = "ListOfTaskView";
+            ViewBag.Title = "Task list";
 }
 
 
@@ -10,7 +10,7 @@
 {
     <table>
         <tr>
-            <td width="92"  ><h2>@t.Title</h2></td>
+            <td width="92"><h2>@t.Title</h2></td>
 
 
             <td width="8%">
@@ -19,7 +19,10 @@
         </tr>
 
     </table>
-    <br><br>
+    <table>
+        <tr></tr>
+    </table>
+        <br><br>
 }
 
 

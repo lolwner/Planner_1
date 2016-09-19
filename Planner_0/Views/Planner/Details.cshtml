@@ -4,6 +4,9 @@
     ViewBag.Title = "Details";
 }
 
+<h1>
+    @ViewBag.Time;
+</h1>
 <div>
     <dl>
         <dt>
@@ -27,6 +30,16 @@
 </p>
 
 @using (Html.BeginForm("Delete", "Planner", new { id = Model.Task_ID }, FormMethod.Post ))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <button class="btn btn-danger">Delete</button>
+        @Html.ActionLink("Back to List", "ListOfTaskView")
+    </div>
+}
+
+@using (Html.BeginForm("Delete", "Planner", new { id = Model.Task_ID }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 

@@ -76,6 +76,8 @@ namespace Planner_0.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PlannerModel.Task task = DB.Task.Find(id);
+            ViewBag.Time = DateTime.Now;
+            
 
             if (task == null)
             {
@@ -143,6 +145,11 @@ namespace Planner_0.Controllers
                 }
             }
             return View(taskToUpdate);
+        }
+
+        public void CalculateTime()
+        {
+
         }
     }
 

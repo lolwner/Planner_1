@@ -57,14 +57,16 @@ namespace Planner_0.Models.Planner {
             public DateTime Deadline { get; set; }
 
             //Default constructors, id search using context
-            public Task() {
+            public Task()
+            {
                 this.Title = " ";
                 this.Creation_Time = new DateTime(2000, 1, 1);
                 this.Deadline = new DateTime(2001, 1, 1);
                 this.User_ID = System.Web.HttpContext.Current.User.Identity.GetUserId();
             }
 
-            public Task(string task) {
+            public Task(string task)
+            {
                 this.Title = task;
                 this.Creation_Time = new DateTime(2000, 1, 1);
                 this.Deadline = new DateTime(2001, 1, 1);
@@ -72,14 +74,18 @@ namespace Planner_0.Models.Planner {
                 this.Category_ID = 0;
             }
 
-            public Category Get_category() {
-                try {
+            public Category Get_category()
+            {
+                try
+                {
                     return DB.Category.Find(this.Category_ID);
                 }
-                catch {
+                catch
+                {
                     return null;
                 }
             }
+
 
         }
     }
