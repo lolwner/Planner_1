@@ -147,9 +147,13 @@ namespace Planner_0.Controllers
             return View(taskToUpdate);
         }
 
-        public void CalculateTime()
+        public JsonResult GetTasks()
         {
-
+            IEnumerable<PlannerModel.Task> tasks = DB.Task;
+            var JsonTasks = tasks
+                .Where(t => t.User_ID == System.Web.HttpContext.Current.User.Identity.GetUserId())
+                .ToList();
+            return Json(JsonTasks, JsonRequestBehavior.AllowGet);  
         }
     }
 

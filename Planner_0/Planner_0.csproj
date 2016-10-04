@@ -206,11 +206,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JS\angular.min.js" />
     <Content Include="Scripts\JS\progressbar.js" />
     <Content Include="Scripts\JS\Timer.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Services\JsonTaskModule.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="timer_clock_1890.ico" />
     <Content Include="Web.config">

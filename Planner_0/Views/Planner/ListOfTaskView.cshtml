@@ -1,29 +1,39 @@
 ﻿@using Planner_0.Models.Planner;
 @model PlannerModel.Task
 
+@section scripts{
+    <script src="~/Scripts/JS/angular.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/Services/JsonTaskModule.js"</script>
+}
+
 @{
             ViewBag.Title = "Task list";
 }
 
 
-@foreach (var t in ViewBag.Task)
-{
-    <table>
-        <tr>
-            <td width="92"><h2>@t.Title</h2></td>
 
 
-            <td width="8%">
-                @Html.ActionLink("Get detail", "Details", "Planner", new { id = t.Task_ID }, new { @class = "btn btn-edit" })
-            </td>
-        </tr>
+@*@foreach (var t in ViewBag.Task)
+    {
+        <table>
+            <tr>
+                <td width="92"><h2>@t.Title</h2></td>
 
-    </table>
-    <table>
-        <tr></tr>
-    </table>
-        <br><br>
-}
+
+                <td width="8%">
+                    @Html.ActionLink("Get detail", "Details", "Planner", new { id = t.Task_ID }, new { @class = "btn btn-edit" })
+                </td>
+            </tr>
+
+        </table>
+        <table>
+            <tr></tr>
+        </table>
+            <br><br>
+    }*@
+
+
+
 
 
 <style>
@@ -41,3 +51,60 @@
         text-align: center;
     }
 </style>
+
+
+@{
+    if (ViewBag.Task != null)
+    {
+        List<PlannerModel.Task> tasks = (ViewBag.Task as IEnumerable<PlannerModel.Task>).ToList<PlannerModel.Task>();
+
+        foreach (var t in tasks)
+        {
+            <table>
+                <tr>
+                    <td width="92"><h2>@t.Title</h2></td>
+
+
+                    <td width="8%">
+                        @Html.ActionLink("Get detail", "Details", "Planner", new { id = t.Task_ID }, new { @class = "btn btn-edit" })
+                    </td>
+                </tr>
+
+            </table>
+            <br><br>
+        }
+
+        <h1>HERE COMES MAGIC</h1>
+        <div ng-app="JsonTask" class="container">
+            <br />
+            <br />
+            <br />
+            <div ng-controller="JsonTaskController">
+                <table class="table">
+                    <tr ng-repeat="r in tasks">
+                        <td>{{r.Title}}</td>
+
+                            <tr>
+                            </table>
+                            </div>
+                            </div>
+
+
+                            @*<div ng-init="init('@Model')"></div>
+                                <script>
+                                    $scope.arrayOfArrays = JSON.parse('@Html.Raw(tasks)');
+                                    $scope.test = JSON.parse('@Html.Raw(ViewBag.Title)');
+                                    $scope.init = function (Task) {
+                                        console.log(Task); // prints value of name
+                                    }
+                                </script>
+
+
+                                <ul>
+                                    <li ng-repeat="item in arrayOfArrays">
+                                        <p>{{item}} </p>
+                                </ul>*@
+
+                            }
+                            }
+
