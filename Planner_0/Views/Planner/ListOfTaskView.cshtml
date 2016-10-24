@@ -2,38 +2,13 @@
 @model PlannerModel.Task
 
 @section scripts{
-    <script src="~/Scripts/JS/angular.min.js" type="text/javascript"></script>
-    <script src="~/Scripts/Services/JsonTaskModule.js"</script>
+    <script src="~/Scripts/Services/JsonTaskModule.js"></script>
+    <script src="~/Scripts/Components/TimeInput/timeinput.directive.js"></script>
 }
 
 @{
-            ViewBag.Title = "Task list";
+    ViewBag.Title = "Task list";
 }
-
-
-
-
-@*@foreach (var t in ViewBag.Task)
-    {
-        <table>
-            <tr>
-                <td width="92"><h2>@t.Title</h2></td>
-
-
-                <td width="8%">
-                    @Html.ActionLink("Get detail", "Details", "Planner", new { id = t.Task_ID }, new { @class = "btn btn-edit" })
-                </td>
-            </tr>
-
-        </table>
-        <table>
-            <tr></tr>
-        </table>
-            <br><br>
-    }*@
-
-
-
 
 
 <style>
@@ -50,10 +25,19 @@
         padding-bottom: .5em;
         text-align: center;
     }
+
+    .card {
+        display: inline-block;
+        width: 300px;
+        height: 400px;
+        border: 1px solid #000;
+        margin: 10px 10px 0 0;
+        padding: 10px;
+    }
 </style>
 
 
-@{
+@*@{
     if (ViewBag.Task != null)
     {
         List<PlannerModel.Task> tasks = (ViewBag.Task as IEnumerable<PlannerModel.Task>).ToList<PlannerModel.Task>();
@@ -72,39 +56,28 @@
 
             </table>
             <br><br>
+            }
         }
+    }*@
 
-        <h1>HERE COMES MAGIC</h1>
-        <div ng-app="JsonTask" class="container">
-            <br />
-            <br />
-            <br />
-            <div ng-controller="JsonTaskController">
-                <table class="table">
-                    <tr ng-repeat="r in tasks">
-                        <td>{{r.Title}}</td>
+<h1>HERE COMES MAGIC</h1>
 
-                            <tr>
-                            </table>
-                            </div>
-                            </div>
+    <time-input></time-input>
 
 
-                            @*<div ng-init="init('@Model')"></div>
-                                <script>
-                                    $scope.arrayOfArrays = JSON.parse('@Html.Raw(tasks)');
-                                    $scope.test = JSON.parse('@Html.Raw(ViewBag.Title)');
-                                    $scope.init = function (Task) {
-                                        console.log(Task); // prints value of name
-                                    }
-                                </script>
 
+<div class="container">
+    <br />
+    <br />
+    <input type="text" placeholder="Search task" ng-model="searchTask" />
+    <br />
+    <div ng-controller="JsonTaskController">
+        <div ng-repeat="r in tasks | filter : searchTask" class="card">
+            <div>{{r.Title}}</div>
 
-                                <ul>
-                                    <li ng-repeat="item in arrayOfArrays">
-                                        <p>{{item}} </p>
-                                </ul>*@
+            <div><a data-ng-href="@Url.Action("Details", "Planner")/{{r.Task_ID}}" target="_self">Details</a></div>
 
-                            }
-                            }
+        </div>
+    </div>
+</div>
 

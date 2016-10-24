@@ -42,11 +42,13 @@ namespace Planner_0.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Title, User_ID, Creation_Time, Category_ID, Deadline")]PlannerModel.Task task)
@@ -68,6 +70,7 @@ namespace Planner_0.Controllers
             }
             return View(task);
         }
+
 
         public ActionResult Details(int? id)
         {

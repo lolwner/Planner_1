@@ -22,3 +22,12 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.card{
+    display: inline-block;
+	width: 300px;
+	height: 400px;
+	border: 1px solid #000;
+	margin: 10px 10px 0 0;
+	padding: 10px;
+}

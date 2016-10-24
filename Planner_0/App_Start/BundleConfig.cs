@@ -23,6 +23,11 @@ namespace Planner_0 {
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                        "~/Scripts/angular.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/index.run").Include(
+                        "~/Scripts/index.run.js"));
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿var JsonTask = angular.module('JsonTask', []);
+﻿var JsonTask = angular
+    .module('Planner');
+
 JsonTask.controller('JsonTaskController', function ($scope, JsonTaskService) {
 
     getTasks();
@@ -6,7 +8,6 @@ JsonTask.controller('JsonTaskController', function ($scope, JsonTaskService) {
         JsonTaskService.getTasks()
             .success(function (tsk) {
                 $scope.tasks = tsk;
-                console.log($scope.tasks);
             })
             .error(function (error) {
                 $scope.status = 'Unable to data: ' + error.message;

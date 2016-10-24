@@ -194,11 +194,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\Bonsai\bonsai-0.4.1.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include=".bin\node.cmd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Components\TimeInput\timeinput.directive.js" />
+    <Content Include="Scripts\Components\TimeInput\timeInput.html" />
+    <Content Include="Scripts\index.run.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -206,7 +208,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\JS\angular.min.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\JS\progressbar.js" />
     <Content Include="Scripts\JS\Timer.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />

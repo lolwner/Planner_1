@@ -3,12 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mitin Victor">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/index.run")
 
 </head>
-<body>
+<body ng-app="Planner">
 
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -32,11 +35,15 @@
             </div>
         </div>
     </div>
+
+    
     <div class="container body-content">
         @RenderBody()
+
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Task planner</p>
+            
         </footer>
     </div>
 
