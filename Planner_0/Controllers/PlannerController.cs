@@ -51,13 +51,14 @@ namespace Planner_0.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Title, User_ID, Creation_Time, Category_ID, Deadline")]PlannerModel.Task task)
+        public ActionResult Create([Bind(Include = "Title, User_ID, Category_ID, Deadline")]PlannerModel.Task task)
         {
             task.User_ID = System.Web.HttpContext.Current.User.Identity.GetUserId();
             try
             {
                 if (ModelState.IsValid)
                 {
+                    task.Creation_Time = DateTime.Now;
                     DB.Task.Add(task);
                     DB.SaveChanges();
                     return RedirectToAction("ListOfTaskView");

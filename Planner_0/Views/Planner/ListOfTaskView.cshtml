@@ -4,6 +4,7 @@
 @section scripts{
     <script src="~/Scripts/Services/JsonTaskModule.js"></script>
     <script src="~/Scripts/Components/TimeInput/timeinput.directive.js"></script>
+    <script src="~/Scripts/Components/TaskCard/taskcard.directive.js"></script>
 }
 
 @{
@@ -12,7 +13,7 @@
 
 
 <style>
-    table {
+    /*table {
         width: 80%;
         border-collapse: collapse;
         border-radius: 5px;
@@ -24,60 +25,38 @@
         padding-top: .5em;
         padding-bottom: .5em;
         text-align: center;
-    }
+    }*/
 
     .card {
         display: inline-block;
         width: 300px;
-        height: 400px;
+        height: 150px;
         border: 1px solid #000;
         margin: 10px 10px 0 0;
         padding: 10px;
     }
+    .zoom{
+        zoom: 150%;
+        background-color: 000;
+    }
+    textarea {
+   resize: none;
+   background-color: #ffc933;
+}
 </style>
 
-
-@*@{
-    if (ViewBag.Task != null)
-    {
-        List<PlannerModel.Task> tasks = (ViewBag.Task as IEnumerable<PlannerModel.Task>).ToList<PlannerModel.Task>();
-
-        foreach (var t in tasks)
-        {
-            <table>
-                <tr>
-                    <td width="92"><h2>@t.Title</h2></td>
-
-
-                    <td width="8%">
-                        @Html.ActionLink("Get detail", "Details", "Planner", new { id = t.Task_ID }, new { @class = "btn btn-edit" })
-                    </td>
-                </tr>
-
-            </table>
-            <br><br>
-            }
-        }
-    }*@
-
-<h1>HERE COMES MAGIC</h1>
-
-    <time-input></time-input>
+@*<time-input></time-input>*@
 
 
 
 <div class="container">
     <br />
-    <br />
     <input type="text" placeholder="Search task" ng-model="searchTask" />
     <br />
+    <timeinput></timeinput>
     <div ng-controller="JsonTaskController">
-        <div ng-repeat="r in tasks | filter : searchTask" class="card">
-            <div>{{r.Title}}</div>
+        <taskcard ng-repeat="t in tasks" item="t" id="{{$index}}" | filter : searchTask" class="card" ng-click="zoomClick=1" ng-class='{"zoom": zoomClick==1}'></taskcard>
 
-            <div><a data-ng-href="@Url.Action("Details", "Planner")/{{r.Task_ID}}" target="_self">Details</a></div>
-
-        </div>
     </div>
 </div>
 

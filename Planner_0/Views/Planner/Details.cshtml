@@ -11,13 +11,17 @@
     <dl>
         <dt>
             @Html.DisplayNameFor(model => model.Creation_Time)
+            
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Creation_Time)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            <h1>
+                @Html.DisplayNameFor(model => model.Title)
+            </h1>
+            
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Title)
@@ -35,16 +39,5 @@
 
     <div class="form-actions no-color">
         <button class="btn btn-danger">Delete</button>
-        @Html.ActionLink("Back to List", "ListOfTaskView")
-    </div>
-}
-
-@using (Html.BeginForm("Delete", "Planner", new { id = Model.Task_ID }, FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-actions no-color">
-        <button class="btn btn-danger">Delete</button>
-        @Html.ActionLink("Back to List", "ListOfTaskView")
     </div>
 }
