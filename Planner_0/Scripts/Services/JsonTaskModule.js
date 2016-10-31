@@ -2,6 +2,7 @@
     .module('Planner');
 
 JsonTask.controller('JsonTaskController', function ($scope, JsonTaskService) {
+    
 
     getTasks();
     function getTasks() {

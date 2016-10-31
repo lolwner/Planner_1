@@ -10,7 +10,12 @@ TC.directive('taskcard', function () {
         },
         controller: TaskCardController,
         controllerAs: 'taskcard',
-        bindToController: true
+        bindToController: true,
+        link: function (scope, elem, attrs) {
+            elem.on('click', function (e) {
+                this.style.zoom = this.style.zoom ? '' : 1.4;
+            });
+        }
     };
     return directive;
 
