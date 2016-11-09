@@ -20,7 +20,7 @@ TC.directive('taskcard', function () {
     return directive;
 
 
-    function TaskCardController($scope) {
+    function TaskCardController($scope, $filter) {
         var vm = this;
     }
 });
