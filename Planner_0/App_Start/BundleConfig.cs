@@ -1,10 +1,13 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Planner_0 {
-    public class BundleConfig {
+namespace Planner_0
+{
+    public class BundleConfig
+    {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
-        public static void RegisterBundles(BundleCollection bundles) {
+        public static void RegisterBundles(BundleCollection bundles)
+        {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -28,6 +31,12 @@ namespace Planner_0 {
                         "~/Scripts/angular.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/index.run").Include(
                         "~/Scripts/index.run.js"));
+
+            bundles.Add(new StyleBundle("~/Content/HADatepicker").Include(
+                "~/Content/ha-datetimepicker/ha-datetimepicker.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/HADatetimepickerjs").Include(
+                "~/Scripts/ha-datetimepicker/ha-datetimepicker.min.js"));
         }
     }
 }

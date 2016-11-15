@@ -53,7 +53,9 @@ namespace Planner_0.Models.Planner {
 
             [Required]
             public int Category_ID { get; set; }
-            
+
+            [DataType(DataType.DateTime)]
+            [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy/hh/mm}", ApplyFormatInEditMode = true)]
             [Required]
             public DateTime Deadline { get; set; }
 

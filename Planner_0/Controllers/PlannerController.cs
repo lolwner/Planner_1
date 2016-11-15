@@ -45,6 +45,9 @@ namespace Planner_0.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            ViewBag.CurrentDate2 = DateTime.Now;
+            ViewBag.CurrentDate = DateTime.Today.ToString("d");
+            ViewBag.MaxDate = DateTime.Today.AddYears(1).ToString("d");
             return View();
         }
 
